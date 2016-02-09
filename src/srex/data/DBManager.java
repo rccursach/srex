@@ -46,8 +46,8 @@ public class DBManager {
 
         if(p.getUrl() != null) {
             logger.info("Adding page content to redis database :" + p.getUrl());
-			String s = jedisConnector.hmset("result:"+ranking, urlProperties);
-			logger.info("Page ("+ranking+") content added to Redis database : " + s);
+			//String s = jedisConnector.hmset("result:"+ranking, urlProperties);
+			//logger.info("Page ("+ranking+") content added to Redis database : " + s);
 		} else
             logger.error("Error adding page content to Redis database :" + p.getUrl());
     }

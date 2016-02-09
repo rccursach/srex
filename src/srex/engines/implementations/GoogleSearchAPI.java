@@ -1,5 +1,6 @@
-package srex.engines;
+package srex.engines.implementations;
 
+import srex.engines.SearchEngine;
 import srex.models.Page;
 import srex.models.Query;
 import org.json.simple.JSONArray;
@@ -12,26 +13,17 @@ import java.util.Scanner;
 
 public class GoogleSearchAPI extends SearchEngine {
 
-	/*
-	private String key = "AIzaSyCV7k5XHuO5hEy1y6YjUVHvP2_mMLqtjHE";
-	private String cx = "008965614622624884785:ialisl9b7h4";
-	*/
-	
-	
-	private String key = "AIzaSyCslK1FCnCjeAdKHwcVOYCab1om82_7IfE";
-	private String cx = "008965614622624884785:a-y2w5vzeko";
-	
-	/*
-	private String key = "AIzaSyC1oAy9PdGGdREeQ2KOMj6CPaj0AhB3U3E";
-	private String cx = "008965614622624884785:x60dqoortxm";
-	*/
+	private String key = "";
+	private String cx = "";
 	
 	private String url = "https://www.googleapis.com/customsearch/v1";
 	private Scanner s;
 	
 	
-	public GoogleSearchAPI() {
-		
+	public GoogleSearchAPI(String api_key, String api_cx) {
+		super();
+		this.key = api_key != null ? api_key : "";
+		this.cx = api_cx != null ? api_cx : "";
 	}
 
 	@Override

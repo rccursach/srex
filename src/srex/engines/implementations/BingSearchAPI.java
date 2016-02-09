@@ -1,7 +1,8 @@
-package srex.engines;
+package srex.engines.implementations;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import srex.engines.SearchEngine;
 import srex.models.Page;
 import srex.models.Query;
 import org.apache.commons.codec.binary.Base64;
@@ -19,6 +20,7 @@ public class BingSearchAPI extends SearchEngine {
 	private final static String mBingURL = "https://api.datamarket.azure.com/Bing/Search/v1/Web?Query=%27";
 	private final static String mNumberOfResults = "50";
 	private final static String mResultFormat = "json";
+	private String api_key = null;
 
 	class BingSearchResults {
 
@@ -46,11 +48,16 @@ public class BingSearchAPI extends SearchEngine {
 
 	}
 
+	public BingSearchAPI(String api_key) {
+		super();
+		this.api_key = api_key != null ? api_key : "";
+	}
+
 	@Override
 	public Page[] getPages(Query query, int size) throws IOException {
 		return getBingPages(query.getQuery());
 	}
-	
+
 
 	private BingSearchResults getBingResults(String searchString) throws IOException {
 
@@ -58,7 +65,7 @@ public class BingSearchAPI extends SearchEngine {
 		searchString = searchString.replaceAll(" ", "%20");
 
 		// Define Bing credentials
-		String accountKey="FKCnseSiVMVut/uO7otnQ20cIbhbEvlzCndml7lfSVw";
+		String accountKey = this.api_key;
 		byte[] accountKeyBytes = Base64.encodeBase64((accountKey + ":" + accountKey).getBytes());
 		String accountKeyEnc = new String(accountKeyBytes);
 

@@ -14,7 +14,7 @@ public class main {
         SearchEngine motor;
         EngineFactory ef = EngineFactory.getInstance();
 
-        motor = ef.createEngine(EngineFactory.engines.BING);
+        motor = ef.createEngine(EngineFactory.engines.BING );
         motor.initSearch(q);
     }
 }
